@@ -5,18 +5,18 @@ import { Pagination } from "../components/Pagination"
 import { PokemonCard } from "../components/PokemonCard"
 import { SearchBar } from "../components/SearchBar"
 import { useEffect } from "react";
+import { getAllPokemons } from "../../helpers/getAllPokemons";
 
 export const SearchPokemonPage = () => {
   
   const navigate = useNavigate();
   const location = useLocation();
   const { page = '' }= queryString.parse( location.search );
-
-  // console.log(location);
-  // console.log({ page });
-  
+ 
   useEffect(() => {
-    // console.log('cambio el valor, entonces hacemos una peticion');
+    //TODO: cambiar el rango de pokemones dependiendo el numero de pagina
+    console.log('cambio el valor de page re-organizamos lista de cards');
+  
   }, [page])
   
   return (
@@ -24,6 +24,7 @@ export const SearchPokemonPage = () => {
         <SearchBar/>
         <div className="container mt-4">
             <div className="row">
+              {/* TODO: usar un arreglo para traer todos los pokemones disponibles en la pagina */}
                 <PokemonCard/>
                 <PokemonCard/>
                 <PokemonCard/>
