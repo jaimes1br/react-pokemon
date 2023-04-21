@@ -12,22 +12,15 @@ export const Pagination = () => {
     const page: string | (string | null)[] | null = queryString.parse( location.search ).page;
   
     const valueToPage: string = ( page ) ? page.toString() : '1'
+    const initalPage = parseInt(valueToPage,10);
     
-    let initalPage = parseInt(valueToPage,10);
-    
-    if(!Number.isNaN(initalPage)){
-        if(initalPage > 63) initalPage = 1 
-    }else{
-        initalPage = 1
-    }
-
     const {
         currentPage,
         pagesToShow,
         isDisableNext,
         isDisablePrev,
         setCurrentPage,
-    } = usePagination(initalPage);
+    } = usePagination( initalPage );
 
 
     return (
@@ -36,7 +29,7 @@ export const Pagination = () => {
                 disabled={ isDisablePrev }
                 type='button' 
                 onClick={ () => setCurrentPage(currentPage - 1)} 
-                className="btn btn-dark btn-lg ">
+                className="btn btn-dark btn-lg">
                     &laquo;
             </button>
             {
@@ -46,7 +39,7 @@ export const Pagination = () => {
                         type='button' 
                         onClick={ () => setCurrentPage(page)} 
                         className={ classnames(
-                            'btn btn-dark mx-1', 
+                            'btn btn-dark btn-size mx-1', 
                             {'active-btn' : currentPage === page }, 
                             {'btn-link btn-link_pag': currentPage !== page})}
                             >

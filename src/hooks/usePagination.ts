@@ -11,12 +11,21 @@ const createPagesList = ( totalPages: number ): number[] => {
     return pages
 }
 
-export const usePagination = (initialPage:number = 1) => {
+export const usePagination = ( initialPage:number = 1 ) => {
 
     const navigate = useNavigate();
     const totalPages: number = 63;
     const pagesList = useMemo(() => createPagesList(totalPages),[]);
 
+    useEffect(() => {
+        
+        if(!Number.isNaN(initialPage)){
+            if(initialPage > 63) initialPage = 1 
+        }else{
+            initialPage = 1
+        }
+    },[ initialPage ])
+    
     const [currentPage, setCurrentPage] = useState<number>(initialPage);
     const [pagesToShow, setPagesToShow] = useState<number[]>([]);
     const [isDisablePrev, setIsDisablePrev] = useState<boolean>(true);
@@ -48,7 +57,8 @@ export const usePagination = (initialPage:number = 1) => {
             setCurrentPage(1);
         }
 
-    },[ currentPage ])
+    },[ currentPage ]);
+
     
     return {
         currentPage,

@@ -1,18 +1,7 @@
 import { createSlice, PayloadAction} from '@reduxjs/toolkit'
+import { BasicPokemon, InitialStatePokemon } from '../../shared/types/types';
 
-interface BasicPokemon {
-  name: string
-  url: string
-}
-
-interface InitialState {
-    isSaving: boolean,
-    isLoading: boolean,
-    allPokemons: BasicPokemon[],
-    favPokemons: any[]
-}
-
-const initialState: InitialState = {
+const initialState: InitialStatePokemon = {
     isSaving: false,
     isLoading: false,
     allPokemons: [],
