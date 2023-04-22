@@ -1,42 +1,43 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import queryString from 'query-string';
 
 import { Pagination } from "../components/Pagination"
 import { PokemonCard } from "../components/PokemonCard"
 import { SearchBar } from "../components/SearchBar"
-import { useEffect } from "react";
-import { getAllPokemons } from "../../helpers/getAllPokemons";
+import { useAppSelector } from "../../store/hooks";
+import { BasicPokemon } from "../../shared/types/types";
 
 export const SearchPokemonPage = () => {
   
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { page = '' }= queryString.parse( location.search );
- 
+  const [listPokemonPage, setListPokemonPage] = useState<BasicPokemon[]>([]);
+  const { isLoading, allPokemons = [], currentPage} = useAppSelector( state => state.pokemons);
+
+  const setPokemonsPage = () => {
+    setListPokemonPage(allPokemons.slice((currentPage - 1) * 16, (currentPage * 16)));
+  }
+
   useEffect(() => {
-    //TODO: cambiar el rango de pokemones dependiendo el numero de pagina
-    console.log('cambio el valor de page re-organizamos lista de cards');
-  
-  }, [page])
+    setPokemonsPage();            
+  }, [currentPage])
+
+  useEffect(() => {
+    setPokemonsPage();            
+  },[allPokemons])
   
   return (
     <>  
         <SearchBar/>
         <div className="container mt-4">
             <div className="row">
-              {/* TODO: usar un arreglo para traer todos los pokemones disponibles en la pagina */}
-                <PokemonCard/>
-                <PokemonCard/>
-                <PokemonCard/>
-                <PokemonCard/>
-                <PokemonCard/>
-                <PokemonCard/>
-                <PokemonCard/>
-                <PokemonCard/>
-                <PokemonCard/>
-                <PokemonCard/>
-                <PokemonCard/>
-                <PokemonCard/>
+                {
+                  listPokemonPage.map((pkm,i)=> (
+                    <PokemonCard 
+                      key={i}
+                      pokemon={pkm}
+                      />
+                  ))
+                }
             </div>
         </div>
         <Pagination/>

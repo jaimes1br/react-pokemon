@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useMemo, useState, useEffect } from 'react';
+import { useAppDispatch } from "../store/hooks";
+import { setCurrentPage } from "../store/pokemon/pokemonSlice";
 
 const createPagesList = ( totalPages: number ): number[] => {
     
@@ -13,6 +15,7 @@ const createPagesList = ( totalPages: number ): number[] => {
 
 export const usePagination = ( initialPage:number = 1 ) => {
 
+    const dispatch = useAppDispatch();
     const navigate = useNavigate();
     const totalPages: number = 63;
     const pagesList = useMemo(() => createPagesList(totalPages),[]);
@@ -26,45 +29,46 @@ export const usePagination = ( initialPage:number = 1 ) => {
         }
     },[ initialPage ])
     
-    const [currentPage, setCurrentPage] = useState<number>(initialPage);
+    const [currentPagePag, setCurrentPagePag] = useState<number>(initialPage);
     const [pagesToShow, setPagesToShow] = useState<number[]>([]);
     const [isDisablePrev, setIsDisablePrev] = useState<boolean>(true);
     const [isDisableNext, setIsDisableNext] = useState<boolean>(false);
 
     useEffect(() => {
         
-        if(currentPage >= 1 && currentPage <= 63 ){
+        if(currentPagePag >= 1 && currentPagePag <= 63 ){
             
-            if( currentPage >= 60){                
+            if( currentPagePag >= 60){                
                 setPagesToShow([59,60,61,62,63]);
-            }else if( currentPage <= 3) {
+            }else if( currentPagePag <= 3) {
                 setPagesToShow([1,2,3,4,5]);
             }else {
-                setPagesToShow(pagesList.slice(currentPage - 3, currentPage + 2))
+                setPagesToShow(pagesList.slice(currentPagePag - 3, currentPagePag + 2))
             } 
         
-            ( currentPage === 1 ) 
+            ( currentPagePag === 1 ) 
                 ? setIsDisablePrev(true)
                 : setIsDisablePrev(false);  
 
-            ( currentPage === 63)
+            ( currentPagePag === 63)
                 ? setIsDisableNext(true)
                 : setIsDisableNext(false);  
 
-            navigate(`?page=${ currentPage }`);
-
+            dispatch( setCurrentPage(currentPagePag) );
+            navigate(`?page=${ currentPagePag }`);
+        
         }else{
-            setCurrentPage(1);
+            setCurrentPagePag(1);
         }
 
-    },[ currentPage ]);
+    },[ currentPagePag ]);
 
     
     return {
-        currentPage,
+        currentPagePag,
         pagesToShow,
         isDisableNext,
         isDisablePrev,
-        setCurrentPage,
+        setCurrentPagePag,
     }
 }

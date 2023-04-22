@@ -15,11 +15,11 @@ export const Pagination = () => {
     const initalPage = parseInt(valueToPage,10);
     
     const {
-        currentPage,
+        currentPagePag,
         pagesToShow,
         isDisableNext,
         isDisablePrev,
-        setCurrentPage,
+        setCurrentPagePag,
     } = usePagination( initalPage );
 
 
@@ -28,7 +28,7 @@ export const Pagination = () => {
             <button 
                 disabled={ isDisablePrev }
                 type='button' 
-                onClick={ () => setCurrentPage(currentPage - 1)} 
+                onClick={ () => setCurrentPagePag(currentPagePag - 1)} 
                 className="btn btn-dark btn-lg">
                     &laquo;
             </button>
@@ -37,11 +37,11 @@ export const Pagination = () => {
                     <button 
                         key={ page }
                         type='button' 
-                        onClick={ () => setCurrentPage(page)} 
+                        onClick={ () => setCurrentPagePag(page)} 
                         className={ classnames(
                             'btn btn-dark btn-size mx-1', 
-                            {'active-btn' : currentPage === page }, 
-                            {'btn-link btn-link_pag': currentPage !== page})}
+                            {'active-btn' : currentPagePag === page }, 
+                            {'btn-link btn-link_pag': currentPagePag !== page})}
                             >
                             { page }
                     </button>
@@ -50,7 +50,7 @@ export const Pagination = () => {
             <button 
                 disabled={ isDisableNext }
                 type='button' 
-                onClick={ () => setCurrentPage(currentPage + 1)} 
+                onClick={ () => setCurrentPagePag(currentPagePag + 1)} 
                 className="btn btn-dark btn-lg">
                     &raquo;
             </button>
