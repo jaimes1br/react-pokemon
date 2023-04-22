@@ -1,8 +1,8 @@
-import { Navigate, Route, Routes } from "react-router-dom"
+import { useEffect } from 'react';
+import { Route, Routes } from "react-router-dom"
+import { useAppDispatch } from "../store/hooks";
 import { PokedexRoutes } from "../pokedex/router/PokedexRoutes"
 import { startGetAllPokemons } from "../store/pokemon/thunks";
-import { useEffect } from 'react';
-import { useAppDispatch } from "../store/hooks";
 
 export const AppRouter = () => {
 

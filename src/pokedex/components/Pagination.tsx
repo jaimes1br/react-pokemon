@@ -22,7 +22,6 @@ export const Pagination = () => {
         setCurrentPagePag,
     } = usePagination( initalPage );
 
-
     return (
         <div className="d-flex justify-content-center mt-5 pb-3" >        
             <button 

@@ -1,4 +1,3 @@
-import { AnyAction } from '@reduxjs/toolkit';
 import { getAllPokemons } from '../../helpers';
 import { isLoadingPokemons, setAllPokemons } from './pokemonSlice';
 import { AppDispatch } from '../store';

@@ -1,5 +1,5 @@
 import { pokemonApi } from "../api/pokemonApi";
-import { BasicPokemon } from "../shared/types/types";
+import { BasicPokemon } from "../shared/types";
 
 export const getAllPokemons = async () => {
     

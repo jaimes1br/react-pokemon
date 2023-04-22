@@ -1,5 +1,5 @@
-import { FormEvent } from "react";
 import { useNavigate } from 'react-router-dom';
+import { FormEvent } from "react";
 import { useForm } from "../../hooks"
 
 const formData = {
@@ -9,7 +9,7 @@ const formData = {
 export const SearchBar = () => {
 
   const navigate = useNavigate();
-  const { searchpkm, handleInputChange} = useForm(formData);
+  const { searchpkm, handleInputChange } = useForm(formData);
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();

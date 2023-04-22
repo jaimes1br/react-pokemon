@@ -1,5 +1,4 @@
-import { Navbar } from "../../shared"
-import { Dashboard } from '../components/Dashboard';
+import { Dashboard } from '../components';
 
 export const HomePage = () => {
   return (

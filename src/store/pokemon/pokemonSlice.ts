@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction} from '@reduxjs/toolkit'
-import { BasicPokemon, InitialStatePokemon } from '../../shared/types/types';
+import { BasicPokemon, InitialStatePokemon } from '../../shared/types';
 
 const initialState: InitialStatePokemon = {
     isSaving: false,
@@ -25,6 +25,5 @@ export const pokemonSlice = createSlice({
     }
   },
 })
-
 
 export const { setAllPokemons, isLoadingPokemons, setCurrentPage } =  pokemonSlice.actions;

@@ -63,7 +63,6 @@ export const usePagination = ( initialPage:number = 1 ) => {
 
     },[ currentPagePag ]);
 
-    
     return {
         currentPagePag,
         pagesToShow,

@@ -1,8 +1,7 @@
-import { Navigate, Route, Routes } from "react-router-dom"
-import { HomePage } from "../pages/HomePage"
-import { Navbar } from "../../shared"
-import { SearchPokemonPage } from "../pages/SearchPokemonPage"
-import { DetailPage } from "../pages/DetailPage";
+import { Route, Routes } from "react-router-dom"
+import { DetailPage, HomePage, SearchPokemonPage } from "../pages"
+import { Navbar } from "../../shared/components"
+
 export const PokedexRoutes = () => {
   return (
     <>
