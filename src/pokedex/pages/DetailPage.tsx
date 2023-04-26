@@ -1,60 +1,56 @@
-import { NavLink } from "react-router-dom"
+import { Navigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { PokemonDatail } from '../components';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { startGetPokemonByIdOrName } from '../../store/pokemon/thunks';
+import { PokemonDetailFake } from '../../shared/types';
+import { Loader } from '../../shared/components/Loader';
+
+const pokemonFake: PokemonDetailFake = {
+    id: -1,
+    imageUrl: '',
+    name: '',
+    stats: {
+        'special-attack': -1,
+        'special-defense': -1,
+        attack: -1,
+        defense: -1,
+        hp: -1,
+        speed: -1
+    },
+    types: [],
+}
+
 
 export const DetailPage = () => {
-  return (
-    <>
-    <div className="mt-5  d-flex detail_card">
-       <div className="container">
-        <div className="row">
-            <div className="col-6 d-flex flex-column align-items-center py-3 pkm ">
-                <h2>Pokemon name</h2>
-                <div className="d-flex justify-content-center align-items-center pkm_img">
-                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/101.png" alt="pkm" />
-                </div>
-                <h3>N° 34</h3>
-                <div className="container mt-3">
-                    <div className="row justify-content-evenly">
-                        <h4 className="col-5 my-auto py-1 text-center types">Tipo dos</h4>
-                        <h4 className="col-5 my-auto py-1 text-center types">Tipo uno</h4>
-                    </div>
-                </div>
-            </div>
-            <div className="col-6 d-flex pkm_info">
-                <div className="container my-auto">
-                    <div className="row justify-content-evenly">
-                        <h3 className="col-6">Hp</h3>
-                        <h3 className="col-6 text-end">45</h3>
-                    </div>
-                    <div className="row justify-content-evenly">
-                        <h3 className="col-6">Attack</h3>
-                        <h3 className="col-6 text-end">45</h3>
-                    </div>
-                    <div className="row justify-content-evenly">
-                        <h3 className="col-6">Defense</h3>
-                        <h3 className="col-6 text-end">45</h3>
-                    </div>
-                    <div className="row justify-content-evenly">
-                        <h3 className="col-6">Special-attack</h3>
-                        <h3 className="col-6 text-end">45</h3>
-                    </div>
-                    <div className="row justify-content-evenly">
-                        <h3 className="col-6">Special-defense</h3>
-                        <h3 className="col-6 text-end">45</h3>
-                    </div>
-                    <div className="row justify-content-evenly">
-                        <h3 className="col-6">Speed</h3>
-                        <h3 className="col-6 text-end">45</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-       </div>
-    </div>
-    <div className="d-flex justify-content-end mt-5">
-        <NavLink to="/search/1">
-             <button className="btn btn-back">Regresar</button>
-        </NavLink>
-    </div>
-    </>
-  )
+
+    const dispatch = useAppDispatch();
+    const params = useParams();
+    const { id: toSearch = ''} = params
+    const { isLoading, pokemonDetail } = useAppSelector( state => state.pokemons );
+    const [ isFakePokemon, setIsFakePokemon ] = useState(true);
+
+    useEffect(() => {
+        dispatch( startGetPokemonByIdOrName(toSearch) );
+    },[]);
+
+    useEffect(() => {
+        if(pokemonDetail.id !== -1)
+            setIsFakePokemon(false);
+    },[ pokemonDetail ])
+    
+
+    if( !toSearch ){
+        <Navigate to='/search'/>
+    }
+    
+    return (
+        <>
+            {
+                (isLoading || isFakePokemon)
+                    ? <Loader/>
+                    : <PokemonDatail pokemon={ pokemonDetail }/>
+            }
+        </>
+    )
 }

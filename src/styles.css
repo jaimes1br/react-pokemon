@@ -161,7 +161,7 @@ body {
 /* -------Detail card------------- */
 
 .detail_card{
-    background-color: #E2E2E2;
+    background-color: #ccc;
     max-width: calc(100% - 300px);
     margin-inline: auto;
     box-shadow:30px 25px 15px -8px rgba(0,0,0,0.3);
@@ -174,12 +174,10 @@ body {
 }
 
 .pkm_img{
-    border: 1px solid #000;
-    width: 160px;
-    height: 160px;
-    background-color: #454545;
-    margin-block: 10px;
+    border: 2px solid #000;
     border-radius: 50%;
+    margin-bottom: 10px;
+    width: 12rem;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
@@ -187,8 +185,12 @@ body {
 }
 
 .pkm_img img{
-    width: 95%;
-    height: 95%;
+    border-radius: 50%;
+    width: 100%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
 
 .types{
@@ -216,3 +218,36 @@ body {
 }
 
 /* ------------------------------ */
+
+/* -------loader----------------- */
+
+.container_loader{
+    min-height: 370px;
+}
+
+.loader img{
+    width: 120px;
+}
+
+.loader-ani{
+    animation: 2s loader alternate infinite;
+    -webkit-animation: 2s loader alternate infinite;
+}
+
+@keyframes loader {
+    from {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+    }
+}
