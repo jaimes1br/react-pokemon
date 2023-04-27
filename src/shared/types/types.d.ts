@@ -34,5 +34,6 @@ export interface InitialStatePokemon {
     allPokemons: BasicPokemon[],
     favPokemons: any[],
     currentPage: number,
-    pokemonDetail: PokemonDetail | PokemonDetailFake
+    pokemonDetail: PokemonDetail | PokemonDetailFake,
+    isError: boolean
 }

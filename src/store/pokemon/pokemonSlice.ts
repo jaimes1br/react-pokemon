@@ -1,13 +1,6 @@
 import { createSlice, PayloadAction} from '@reduxjs/toolkit'
-import { BasicPokemon, InitialStatePokemon, PokemonDetail, PokemonDetailFake } from '../../shared/types';
-
-const pokemonFake: PokemonDetailFake = {
-  id: -1,
-  imageUrl: '',
-  name: '',
-  stats: [],
-  types: [],
-}
+import { BasicPokemon, InitialStatePokemon, PokemonDetail } from '../../shared/types';
+import { pokemonFake } from '../../shared/constants';
 
 const initialState: InitialStatePokemon = {
     isSaving: false,
@@ -15,7 +8,8 @@ const initialState: InitialStatePokemon = {
     allPokemons: [],
     favPokemons: [],
     currentPage: 1,
-    pokemonDetail: pokemonFake
+    pokemonDetail: pokemonFake,
+    isError: false,
 }
 
 export const pokemonSlice = createSlice({
@@ -24,17 +18,22 @@ export const pokemonSlice = createSlice({
   reducers: {
     isLoadingPokemons: ( state ) => {
       state.isLoading = true;
+      state.isError = false;
     },
     setAllPokemons: (state, action: PayloadAction<BasicPokemon[]>) => {
       state.allPokemons = action.payload;
-      state.isLoading = false
     },
     setCurrentPage: (state, action: PayloadAction<number>) => {
       state.currentPage = action.payload;
     },
     setDetailPokemon: (state, action: PayloadAction<PokemonDetail>) => {
       state.pokemonDetail = action.payload;
-      state.isLoading = false
+      state.isLoading = false;
+      state.isError = false
+    },
+    setError: (state ) => {
+      state.isError = true;
+      state.isLoading = false;
     }
   },
 })
@@ -43,4 +42,5 @@ export const {
   isLoadingPokemons, 
   setAllPokemons, 
   setCurrentPage, 
-  setDetailPokemon  } =  pokemonSlice.actions;
+  setDetailPokemon,
+  setError  } =  pokemonSlice.actions;

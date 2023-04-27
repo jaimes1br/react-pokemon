@@ -15,11 +15,7 @@ export const SearchPokemonPage = () => {
 
   useEffect(() => {
     setPokemonsPage();            
-  }, [currentPage])
-
-  useEffect(() => {
-    setPokemonsPage();            
-  },[allPokemons])
+  },[allPokemons,currentPage])
   
   return (
     <>  

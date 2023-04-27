@@ -3,7 +3,6 @@ body {
 	animation: gradient 8s ease infinite;
 	background: linear-gradient(-45deg, #f8aa86, #fab04e, #fcf9fa,  #ac6a51);
 	background-size: 400% 400%;
-	height: 100vh;
 	-webkit-animation: gradient 8s ease infinite;
 }
 
@@ -251,3 +250,33 @@ body {
         -o-transform: rotate(360deg);
     }
 }
+
+/* ------------------------------ */
+
+/* -------Not Found----------------- */
+
+.notFound_container{
+    min-height: 35rem;
+}
+
+.notFound_title h1{
+    font-size: 5rem;
+    font-weight: bold;
+}
+
+.notFound_codeNumber{
+    font-size: 8.5rem;
+}
+
+.t-stroke {
+      color: transparent;
+      -moz-text-stroke-width: 2px;
+      -webkit-text-stroke-width: 2px;
+      -moz-text-stroke-color: #000000;
+      -webkit-text-stroke-color: #da5151;
+}
+
+.t-shadow {
+      text-shadow: 5px 5px #F28438;
+}
+    

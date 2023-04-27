@@ -1,6 +1,18 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { useAppDispatch } from '../../store/hooks';
+import { setDetailPokemon } from '../../store/pokemon/pokemonSlice';
+import { pokemonFake } from '../../shared/constants';
 
 export const Dashboard = () => {
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
+    const toSearch = () => {
+        dispatch(setDetailPokemon(pokemonFake));
+        navigate(`/search?page=1`);   
+    }
+
+
   return (
     <div className="mt-5 card_dashboard ">
         <div className="d-flex flex-column justify-content-around align-items-start container-dash_btns ">
@@ -9,11 +21,11 @@ export const Dashboard = () => {
                 to="/favorites">
                 Mis favoritos
             </NavLink>
-            <NavLink
+            <button
                 className="btn btn_dash"
-                to="/search?page=1">
+                onClick={ toSearch }>
                 Buscar Pokemon
-            </NavLink>
+            </button>
             <NavLink
                 className="btn btn_dash"
                 to="/settings">

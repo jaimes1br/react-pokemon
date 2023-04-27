@@ -1,7 +1,9 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { PokemonDetail, PokemonDetailFake } from "../../shared/types"
 import { getColorType, pipePokemonName } from "../../helpers"
-import { useAppSelector } from "../../store/hooks"
+import { useAppDispatch, useAppSelector } from "../../store/hooks"
+import { setDetailPokemon } from "../../store/pokemon/pokemonSlice"
+import { pokemonFake } from "../../shared/constants"
 
 interface Props {
     pokemon: PokemonDetail | PokemonDetailFake
@@ -9,11 +11,19 @@ interface Props {
 
 export const PokemonDatail = ({ pokemon }: Props ) => {
 
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
     const { currentPage } = useAppSelector(state => state.pokemons);
     
     const color1 = getColorType(pokemon?.types[0]);
     const color2 = getColorType(pokemon?.types[1]);
     const colors = [ color1, color2 ];
+
+    const toBack = () => {
+        dispatch(setDetailPokemon(pokemonFake));
+        navigate(`/search?page=${currentPage}`);   
+    }
 
     return (
     <>
@@ -78,9 +88,9 @@ export const PokemonDatail = ({ pokemon }: Props ) => {
        </div>
     </div>
     <div className="d-flex justify-content-end mt-5">
-        <NavLink to={`/search?page=${currentPage}`}>
-             <button className="btn btn-back">Regresar</button>
-        </NavLink>
+        {/* <NavLink to={`/search?page=${currentPage}`}> */}
+             <button className="btn btn-back" onClick={ toBack }>Regresar</button>
+        {/* </NavLink> */}
     </div>
     </>
   )
