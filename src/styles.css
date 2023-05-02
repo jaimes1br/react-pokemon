@@ -117,18 +117,13 @@ body {
     font-variation-settings:'FILL' 1, 'wght' 400, 'GRAD' 0,'opsz' 48;
 }
 
-.link-card{
-    text-decoration: none;
-}
+.link-card{ text-decoration: none; }
 
 /* ------------------------------ */
 
 /* -------PAGINATION------------- */
 
-.margina{
-    margin-top: 4rem;
-    /* padding-bottom: 100px; */
-}
+.margina{ margin-top: 4rem; }
 
 .margina ul > li > a{
     background-color: #454545;
@@ -140,20 +135,14 @@ body {
     cursor: pointer;
 }
 
-.btn-link_pag{
-    color: #454545;
-}
+.btn-link_pag{ color: #454545; }
 
 .btn-link_pag:hover{ color: #fff }
 
 
-.btn-link_pag.active-btn{
-    color: #fff;
-}
+.btn-link_pag.active-btn{ color: #fff; }
 
-.btn-size{
-    min-width: 43.25px;
-}
+.btn-size{ min-width: 43.25px; }
 /* ------------------------------ */
 
 
@@ -202,16 +191,16 @@ body {
     -o-border-radius: 10px;
 }
 
-.pkm_info{
-    color: #454545;
-}
+.pkm_info{ color: #454545; }
 
 .btn-back{
+    border-color: #ff8000;
     background-color: #ff8000;
     color: #fff;
 }
 
 .btn-back:hover{
+    border-color: #EE7800;
     background-color: #EE7800;
     color: #fff;
 }
@@ -220,13 +209,9 @@ body {
 
 /* -------loader----------------- */
 
-.container_loader{
-    min-height: 370px;
-}
+.container_loader{ min-height: 370px; }
 
-.loader img{
-    width: 120px;
-}
+.loader img{ width: 120px; }
 
 .loader-ani{
     animation: 2s loader alternate infinite;
@@ -255,18 +240,14 @@ body {
 
 /* -------Not Found----------------- */
 
-.notFound_container{
-    min-height: 35rem;
-}
+.notFound_container{ min-height: 35rem; }
 
 .notFound_title h1{
     font-size: 5rem;
     font-weight: bold;
 }
 
-.notFound_codeNumber{
-    font-size: 8.5rem;
-}
+.notFound_codeNumber{ font-size: 8.5rem; }
 
 .t-stroke {
       color: transparent;
@@ -276,7 +257,27 @@ body {
       -webkit-text-stroke-color: #da5151;
 }
 
-.t-shadow {
-      text-shadow: 5px 5px #F28438;
-}
+.t-shadow { text-shadow: 5px 5px #F28438; }
     
+
+/* ------------------------------ */
+
+/* -------Auth Layout----------------- */
+ 
+.auth_container{
+    max-width: 50%;
+    background-image: url('/assets/background-auth.jpg');
+    opacity: 85%;
+    background-size: cover;
+    background-position: center;
+    backdrop-filter: blur(10px);
+    border-radius: 1rem;
+    -webkit-border-radius: 1rem;
+    -moz-border-radius: 1rem;
+    -ms-border-radius: 1rem;
+    -o-border-radius: 1rem;
+}
+
+.row-form{ min-height: 140px; }
+
+.row-form-passwords{ min-height: 194px; }

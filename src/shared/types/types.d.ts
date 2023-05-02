@@ -37,3 +37,16 @@ export interface InitialStatePokemon {
     pokemonDetail: PokemonDetail | PokemonDetailFake,
     isError: boolean
 }
+
+export interface FormDataValid {
+    email: string
+    password: string
+    name?: string
+    confirmPassword?: string
+}
+
+export interface RegisterUser {
+    email: string,
+    password: string,
+    displayName: string
+}
