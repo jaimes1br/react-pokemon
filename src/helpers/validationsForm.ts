@@ -6,7 +6,7 @@ const REGS_EXP = {
     EMAIL: /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/
 }
   
-export const validationsForm = (form: FormDataValid) => {
+export const validationsForm = (form: FormDataValid, isLogin: boolean = false) => {
 
     const errors = {
         email: '',
@@ -23,18 +23,26 @@ export const validationsForm = (form: FormDataValid) => {
     } 
 
     if( !REGS_EXP.PASSWORD.test(form.password) ){
-        errors.password =  'La contraseña debe tener al menos 8 caracteres, una letra minúscula, una letra mayúscula, un número, un carácter especial.';
+        if(isLogin){
+            errors.password = 'Contraseña invalida';
+        }else{
+            errors.password =  'La contraseña debe tener al menos 8 caracteres, una letra minúscula, una letra mayúscula, un número, un carácter especial.';
+        }
+        
         isValid = false;
     }
 
-    if( !REGS_EXP.NAME.test(form.name || '') ){
-        errors.name = 'Nombre invalido';
-        isValid = false;
-    }
-
-    if( !(REGS_EXP.PASSWORD.test(form.confirmPassword|| '') && form.confirmPassword=== form.password) ){
-        errors.confirmPassword = 'La contraseña no es igual'
-        isValid = false;
+    if(!isLogin){
+        if( !REGS_EXP.NAME.test(form.name || '') ){
+            errors.name = 'Nombre invalido';
+            isValid = false;
+        }
+    
+    
+        if( !(REGS_EXP.PASSWORD.test(form.confirmPassword || '') && form.confirmPassword=== form.password) ){
+            errors.confirmPassword = 'La contraseña no es igual'
+            isValid = false;
+        }
     }
 
     return { isValid, errors }

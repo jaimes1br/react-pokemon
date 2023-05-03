@@ -16,6 +16,15 @@ export const pokemonSlice = createSlice({
   name: 'pokemon',
   initialState,
   reducers: {
+    clearPokemonState: ( state ) => {
+      state.isSaving = false;
+      state.isLoading = false;
+      state.allPokemons = [];
+      state.favPokemons = [];
+      state.currentPage = 1;
+      state.pokemonDetail = pokemonFake;
+      state.isError =false;
+    },
     isLoadingPokemons: ( state ) => {
       state.isLoading = true;
       state.isError = false;
@@ -34,11 +43,12 @@ export const pokemonSlice = createSlice({
     setError: (state ) => {
       state.isError = true;
       state.isLoading = false;
-    }
+    },
   },
 })
 
 export const { 
+  clearPokemonState,
   isLoadingPokemons, 
   setAllPokemons, 
   setCurrentPage, 

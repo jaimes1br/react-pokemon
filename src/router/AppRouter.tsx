@@ -4,29 +4,25 @@ import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { PokedexRoutes } from "../pokedex/router/PokedexRoutes"
 import { startGetAllPokemons } from "../store/pokemon/thunks";
 import { AuthRoutes } from '../auth/routes/AuthRoutes';
+import { useCheckAuth } from '../hooks/useCheckAuth';
+import { Loader } from '../shared';
 
 export const AppRouter = () => {
 
-  const dispatch = useAppDispatch();
+  const { status } = useCheckAuth();
 
-    const { status } = useAppSelector( state => state.auth);
-
-  useEffect(() => {
-    dispatch( startGetAllPokemons() );
-  },[])
-
-  useEffect(() => {
-    console.log(status);
-    
-  },[status])
+  if( status === 'checking'){
+    return <Loader/>
+  }
 
   return (
     <Routes>
-        {/* <Route path="/*" element={ <PokedexRoutes/> }/> */}
-        <Route path="/auth/*" element={ <AuthRoutes/>} />
-        
-        <Route path="/*" element={ <Navigate to='/auth/login'/> }/>
-
+      {
+        ( status === 'authenticated')
+          ? <Route path="/*" element={ <PokedexRoutes/>}/>
+          : <Route path="/auth/*" element={ <AuthRoutes/>}/>
+      }
+      <Route path="/*" element={ <Navigate to='/auth/login'/> }/>
     </Routes>
   )
 }
