@@ -1,9 +1,10 @@
 import { startLogout } from "../../store/auth/thunks";
-import { useAppDispatch } from "../../store/hooks";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 export const UserDropdown = () => {
 
   const dispatch = useAppDispatch();
+  const { photoURL } = useAppSelector( state => state.auth);
 
   const handleLogout = () => {
     dispatch( startLogout() );
@@ -13,7 +14,7 @@ export const UserDropdown = () => {
     <div className="btn-group dropstart">
         <button className="btn dropdown-toggle d-flex" data-bs-toggle="dropdown">
             <img 
-                src="https://i.pravatar.cc/150?u=jaimes" 
+                src={ photoURL || "https://i.pravatar.cc/150?u=error"} 
                 alt="user_img" 
                 className="btn_user align-self-center "
             />
