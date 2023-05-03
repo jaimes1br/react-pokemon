@@ -286,3 +286,14 @@ body {
     width: 20px;
     height: auto;
 }
+
+.drop-item{
+    cursor: pointer;
+}
+
+.drop-item:hover{
+    color: #fff;
+    background-color: #EE7800;
+
+}
+
