@@ -7,15 +7,16 @@ import { BasicPokemon } from "../../shared/types";
 export const SearchPokemonPage = () => {
   
   const [ listPokemonPage, setListPokemonPage ] = useState<BasicPokemon[]>([]);
-  const { allPokemons = [], currentPage} = useAppSelector( state => state.pokemons );
+  const { allPokemons = [], currentPage } = useAppSelector( state => state.pokemons );
 
   const setPokemonsPage = () => {
     setListPokemonPage(allPokemons.slice((currentPage - 1) * 16, (currentPage * 16)));
   }
 
   useEffect(() => {
-    setPokemonsPage();            
-  },[allPokemons,currentPage])
+    if(allPokemons.length > 0) setPokemonsPage();           
+  
+  },[ allPokemons,currentPage ])
   
   return (
     <>  

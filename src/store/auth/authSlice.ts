@@ -1,14 +1,15 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
+import { InitialStateAuth } from '../../shared/types'
 
 const IMAGE_DEFAULT = "https://i.pravatar.cc/150?u="
 
-const initialState = {
+const initialState: InitialStateAuth = {
     status: 'checking', //'checking','not-authenticated', 'authenticated'
     uid: null,
     email: null,
     displayName: null,
     photoURL: null,
-    errorMessage: null
+    errorMessage: null,
 }
 
 export const authSlice = createSlice({

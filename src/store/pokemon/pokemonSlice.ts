@@ -44,7 +44,27 @@ export const pokemonSlice = createSlice({
       state.isError = true;
       state.isLoading = false;
     },
-  },
+    setIsSavingFav: ( state ) => {
+      state.isSaving = true;
+    },
+    setPokemonFav: ( state, { payload }:  PayloadAction<number[]> ) => {
+      state.favPokemons = payload;
+      payload.forEach( id => {
+        state.allPokemons[id - 1] = {...state.allPokemons[id - 1], isFav: true};
+      })
+      state.isSaving=false;
+    },
+    setAddPokemonFav: (state, { payload }: PayloadAction<{pkms: number[], id: number}>) => {
+      state.favPokemons = payload.pkms;
+      state.allPokemons[payload.id - 1] = {...state.allPokemons[payload.id - 1], isFav: true};
+      state.isSaving = false;  
+    },
+    setDeletePokemonFav: (state, { payload }: PayloadAction<{pkms: number[], id: number}>) => {
+      state.favPokemons = payload.pkms;
+      state.allPokemons[payload.id - 1] = {...state.allPokemons[payload.id - 1], isFav: false};
+      state.isSaving = false;
+    }
+  }
 })
 
 export const { 
@@ -53,4 +73,8 @@ export const {
   setAllPokemons, 
   setCurrentPage, 
   setDetailPokemon,
-  setError  } =  pokemonSlice.actions;
+  setError,
+  setIsSavingFav,
+  setPokemonFav,
+  setAddPokemonFav,
+  setDeletePokemonFav  } =  pokemonSlice.actions;

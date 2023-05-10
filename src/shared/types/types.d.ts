@@ -2,6 +2,7 @@ export interface BasicPokemon {
     name: string
     url: string
     id: number
+    isFav: boolean
 }
 
 export interface StatsPokemon {
@@ -35,9 +36,17 @@ export interface InitialStatePokemon {
     favPokemons: any[],
     currentPage: number,
     pokemonDetail: PokemonDetail | PokemonDetailFake,
-    isError: boolean
+    isError: boolean,
 }
 
+export interface InitialStateAuth {
+    status: 'checking' |'not-authenticated' | 'authenticated'
+    uid: null,
+    email: null,
+    displayName: null,
+    photoURL: null,
+    errorMessage: null
+}
 export interface FormDataValid {
     email: string
     password: string

@@ -101,7 +101,10 @@ body {
     -o-border-radius: 0.6rem;
 }
 
-.card_pokemon-list--text_name{ font-size: 24px; }
+.card_pokemon-list--text_name{ 
+    color: #454545;
+    font-size: 24px; 
+}
 
 .free-space{ flex: 1 1 auto; }
 
@@ -112,9 +115,23 @@ body {
     text-decoration:none !important;
 }
 
-.icon_heart{    
+.card_pokemon-list--text_name:hover,
+.card_pokemon-list--text_id:hover {
+    color: #454545; 
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.icon_heart--active{    
     color: red;
     font-variation-settings:'FILL' 1, 'wght' 400, 'GRAD' 0,'opsz' 48;
+}
+
+.icon_heart--no_active{
+    color: #000;
+    font-variation-settings:'FILL' 0, 'wght' 400, 'GRAD' 0,'opsz' 48;
 }
 
 .link-card{ text-decoration: none; }
