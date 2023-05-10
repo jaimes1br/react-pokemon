@@ -12,5 +12,6 @@ export const pokemonFake: PokemonDetailFake = {
         hp: -1,
         speed: -1
     },
-    types: []
+    types: [],
+    isFav: false
 }

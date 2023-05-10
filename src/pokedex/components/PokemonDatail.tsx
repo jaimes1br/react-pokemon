@@ -4,6 +4,8 @@ import { getColorType, pipePokemonName } from "../../helpers"
 import { useAppDispatch, useAppSelector } from "../../store/hooks"
 import { setDetailPokemon } from "../../store/pokemon/pokemonSlice"
 import { pokemonFake } from "../../shared/constants"
+import classnames from 'classnames';
+import { useFavorite } from "../../hooks"
 
 interface Props {
     pokemon: PokemonDetail | PokemonDetailFake
@@ -14,6 +16,7 @@ export const PokemonDatail = ({ pokemon }: Props ) => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
+    const { isFav, handleFavorite } = useFavorite({pokemon });
     const { currentPage } = useAppSelector(state => state.pokemons);
     
     const color1 = getColorType(pokemon?.types[0]);
@@ -31,7 +34,18 @@ export const PokemonDatail = ({ pokemon }: Props ) => {
        <div className="container">
         <div className="row">
             <div className="col-6 d-flex flex-column align-items-center py-3 pkm ">
-                <h2>{ pokemon?.name }</h2>
+                <div className="container d-flex justify-content-center align-items-center">
+                    <span 
+                        className={ classnames(
+                        'material-symbols-outlined pointer me-3',
+                         {'icon_heart--active': isFav },
+                         {'icon_heart--no_active': !isFav },
+                        )}
+                        onClick={ handleFavorite }>
+                        favorite
+                    </span>
+                    <h2 className="">{ pokemon?.name }</h2>
+                </div>
                 <div className="d-flex justify-content-center align-items-center pkm_img">
                     <img 
                         loading="eager"

@@ -16,7 +16,6 @@ export const useLogin = (formData: any) => {
     
     const hanldeSubmit = (evt: FormEvent<HTMLFormElement>) => {
       evt.preventDefault();
-      console.log(formState);
       const { isValid, errors } = validationsForm(formState,true);
       setFormSubmitted(true);
       setIsValidForm(isValid);

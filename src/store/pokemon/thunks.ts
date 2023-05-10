@@ -2,7 +2,7 @@ import { getAllPokemons } from '../../helpers';
 import { isLoadingPokemons, setAddPokemonFav, setAllPokemons, setDeletePokemonFav, setDetailPokemon, setError, setIsSavingFav, setPokemonFav } from './pokemonSlice';
 import { AppDispatch, RootState } from '../store';
 import { getPokemonByIdOrName } from '../../helpers';
-import { PokemonDetail } from '../../shared/types';
+import { PokemonDetail, PokemonDetailApi } from '../../shared/types';
 import { useAppSelector } from '../hooks';
 import { doc, setDoc } from 'firebase/firestore/lite';
 import { FirebaseDB } from '../../firebase/config';
@@ -24,12 +24,18 @@ export const startGetAllPokemons = ( uid: string ) => {
 }
 
 export const startGetPokemonByIdOrName = (search = '') => {
-    return async( dispatch: AppDispatch ) => {
+    return async( dispatch: AppDispatch,getState:any ) => {
         dispatch(isLoadingPokemons());
         
         setTimeout(async function(){
             try {
-                const pokemonDetail: PokemonDetail = await getPokemonByIdOrName(search);
+                const pokemonDetailApi: PokemonDetailApi = await getPokemonByIdOrName(search);
+                const { favPokemons } = getState().pokemons
+                const pokemonDetail = {
+                    ...pokemonDetailApi, 
+                    isFav: favPokemons.includes(pokemonDetailApi.id)
+                }
+                
                 dispatch( setDetailPokemon( pokemonDetail ));
             
             } catch (error: any) {
@@ -50,16 +56,13 @@ export const startAddFav = ( id: number) => {
         const { favPokemons } = getState().pokemons
         if( !uid ) throw new Error('El UID no existe');
         
-        console.log(favPokemons);
         const newFav = [...favPokemons,id];
-
 
         const docRef = doc( FirebaseDB, `${uid}/info/favPkm/pokemons`);
         await setDoc(docRef,{pkms: newFav},{ merge: true });
         
         dispatch(setAddPokemonFav({pkms: newFav, id}))       
     }
-
 }
 
 export const startDeleteFav = ( id: number ) => {

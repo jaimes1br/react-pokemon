@@ -19,6 +19,15 @@ export interface PokemonDetail {
     imageUrl: string
     name: string
     stats: StatsPokemon
+    types: string[],
+    isFav: boolean
+}
+
+export interface PokemonDetailApi {
+    id: number
+    imageUrl: string
+    name: string
+    stats: StatsPokemon
     types: string[]
 }
 
@@ -27,7 +36,8 @@ export  interface PokemonDetailFake {
     imageUrl: ''
     name: ''
     stats: StatsPokemon
-    types: []
+    types: [],
+    isFav: boolean
 }
 export interface InitialStatePokemon {
     isSaving: boolean,
