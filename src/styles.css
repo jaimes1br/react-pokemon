@@ -314,3 +314,28 @@ body {
 }
 
 .free-space{ flex: 1 1 auto;}
+
+
+
+/* nav */
+
+.nav_item{
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nav_item:hover,.nav_item:active{
+    color: #FF9C86;
+}
+
+.active-item{
+    color: #FF5733;
+    border-bottom: 3px solid #FF5733;
+}
+
+.active-item:hover{
+    color: #FF9C86;
+    border-bottom: 3px solid #FF9C86;
+
+}
