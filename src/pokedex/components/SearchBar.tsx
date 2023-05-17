@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { FormEvent } from "react";
 import { useForm } from "../../hooks"
+import { useTranslation } from 'react-i18next';
 
 const formData = {
   searchpkm: ''
@@ -10,11 +11,14 @@ export const SearchBar = () => {
 
   const navigate = useNavigate();
   const { searchpkm, handleInputChange } = useForm(formData);
+  const [t] = useTranslation('global');  
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     navigate(`/detail/${searchpkm}`);
    }
+
+  const placeholder = t("SEARCH_BAR.PLACEHOLDER")
 
   return (
     <div className="mt-4 container d-flex justify-content-center">
@@ -24,7 +28,7 @@ export const SearchBar = () => {
             className="form-control" 
             name="searchpkm"
             onChange={ handleInputChange } 
-            placeholder="Search Pokemon"
+            placeholder={ placeholder }
             type="text" 
             value={ searchpkm }
             />

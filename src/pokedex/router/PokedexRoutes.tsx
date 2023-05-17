@@ -1,11 +1,12 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import { DetailPage, FavoritesPage, HomePage, SearchPokemonPage } from "../pages"
-import { Navbar } from "../../shared/components"
+import { LanguageBar, Navbar } from "../../shared/components"
 
 export const PokedexRoutes = () => {
   return (
     <>
       <Navbar/>
+      <LanguageBar/>
       <div className="container">
         <Routes>
             <Route path="/" element={ <HomePage/> }/>

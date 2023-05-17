@@ -1,11 +1,12 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { LoginPage, RegisterPage } from '../pages';
-import { NavBarAuth } from '../../shared';
+import { LanguageBar, NavBarAuth } from '../../shared';
 
 export const AuthRoutes = () => {
   return (
     <>
       <NavBarAuth/>
+      <LanguageBar/>
       <div className="container">
         <Routes>
             <Route path='login' element={<LoginPage/>}/>

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useAppSelector } from "../../store/hooks";
 import { Loader } from "../../shared";
 import { PokemonCard } from "../components";
+import { useTranslation } from "react-i18next";
 
 export const FavoritesPage = () => {
   
@@ -12,7 +13,7 @@ export const FavoritesPage = () => {
   const [ isEmptyFav, setIsEmptyFav ] = useState<boolean>(false);
   const [ isLoadingFavs, setIsLoadingFavs] = useState<boolean>(true);
   const [ numFav, setNumFav ] = useState<number>(0);
-
+  const [t] =useTranslation('global');
 
   const setPokemonPage = () => {
     setNumFav(favPokemons.length);
@@ -39,7 +40,7 @@ export const FavoritesPage = () => {
         <>
           <div className="container mt-4">
             <div>
-              <h3 className="text-center">Mis pokemons favoritos</h3>
+              <h3 className="text-center">{t('FAVORITES_PAGE.MY_FAVORITES')}</h3>
               <hr className="hr-div"/>
               <div className="d-flex justify-content-end align-text-top">
                 <img
@@ -60,15 +61,15 @@ export const FavoritesPage = () => {
                   <span className="material-symbols-outlined icon-size-sad">
                     sentiment_dissatisfied
                   </span>
-                  <h1 className="notPokemons my-2">Uppss...</h1>
-                  <h5 className="mt-2 mb-5">Aún no tienes pokemones favoritos.</h5>
+                  <h1 className="notPokemons my-2">{t("FAVORITES_PAGE.UPS")}</h1>
+                  <h5 className="mt-2 mb-5">{t("FAVORITES_PAGE.FAV_EMPTY")}</h5>
                   <NavLink 
                     className='btn btn-back font-search'
                     to={'/search?page=1'}>
                       <span className="material-symbols-outlined align-middle me-1">
                         search
                       </span>
-                      Buscar
+                      {t("FAVORITES_PAGE.SEARCH")}
                   </NavLink>
                 </div>
             

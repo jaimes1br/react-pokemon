@@ -1,7 +1,10 @@
 import { useNavigate } from "react-router-dom"
 import { NavbarLayout } from "../layout/NavbarLayout"
+import { useTranslation } from 'react-i18next';
 
 export const NavBarAuth = () => {
+    const [t] = useTranslation('global');
+
     const navigate = useNavigate();
 
     const handleNavigate = (to: string) => {
@@ -15,13 +18,13 @@ export const NavBarAuth = () => {
                 <button 
                     className="btn btn-back me-2"
                     onClick={ () => handleNavigate('register')}>
-                        Registro
+                        {t('LOGIN.REGISTER')}
                 </button>
 
                 <button 
                     className="btn btn-back ms-2"
                     onClick={ () => handleNavigate('login')}>
-                        Acceder
+                        {t('LOGIN.LOGIN')}
                 </button>
             </div>
         </NavbarLayout>

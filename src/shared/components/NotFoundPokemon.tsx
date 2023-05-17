@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useAppSelector } from "../../store/hooks";
+import { useTranslation } from "react-i18next";
 
 interface Props {
     pokemon: string
@@ -7,6 +8,7 @@ interface Props {
 
 export const NotFoundPokemon = ({ pokemon }: Props) => {
     const { currentPage } = useAppSelector(state => state.pokemons);
+    const [ t ] = useTranslation('global');
 
     return (
         <div className="container d-flex 
@@ -17,10 +19,10 @@ export const NotFoundPokemon = ({ pokemon }: Props) => {
                         notFound_container
                         mt-1">
             <div className="notFound_title my-2">
-                <h1>Uh-Oh...</h1>
+                <h1>{t('NOT_FOUND.TITLE')}</h1>
             </div>
             <div className="notFound_message">
-                <h4>The pokemon { pokemon } does not exist</h4>
+                <h4>{t('NOT_FOUND.THE_POKEMON')} { pokemon } {t('NOT_FOUND.NOT_EXIST')}</h4>
             </div>
             <div className="notFound_codeNumber t-stroke t-shadow">
                 404
@@ -36,7 +38,7 @@ export const NotFoundPokemon = ({ pokemon }: Props) => {
             </div>
             <div className="notFound_btn mt-5">
                 <NavLink to={`/search?page=${currentPage}`}>
-                    <button type="button" className="btn btn-lg btn-back">¡Buscar pokemon!</button>
+                    <button type="button" className="btn btn-lg btn-back">{t('NOT_FOUND.SEARCH_PKM')}</button>
                 </NavLink>
             </div>
         </div>

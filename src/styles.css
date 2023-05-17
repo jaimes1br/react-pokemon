@@ -388,3 +388,9 @@ body {
 .font-search{ font-size: 18px; vertical-align: middle; }
 
 .notPokemons{ font-size: 4rem; }
+
+.select_lang:hover{ 
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+}

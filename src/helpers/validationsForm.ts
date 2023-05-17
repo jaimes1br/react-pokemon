@@ -18,15 +18,15 @@ export const validationsForm = (form: FormDataValid, isLogin: boolean = false) =
     let isValid = true;
 
     if( !REGS_EXP.EMAIL.test(form.email) ) {
-        errors.email = 'Correo invalido';
+        errors.email = 'ERROR_MESSAGE.INVALID_EMAIL';
         isValid = false;
     } 
 
     if( !REGS_EXP.PASSWORD.test(form.password) ){
         if(isLogin){
-            errors.password = 'Contraseña invalida';
+            errors.password = 'ERROR_MESSAGE.INVALID_PASSWORD';
         }else{
-            errors.password =  'La contraseña debe tener al menos 8 caracteres, una letra minúscula, una letra mayúscula, un número, un carácter especial.';
+            errors.password = 'ERROR_MESSAGE.PASSWORD_CONTENT';
         }
         
         isValid = false;
@@ -34,13 +34,13 @@ export const validationsForm = (form: FormDataValid, isLogin: boolean = false) =
 
     if(!isLogin){
         if( !REGS_EXP.NAME.test(form.name || '') ){
-            errors.name = 'Nombre invalido';
+            errors.name = 'ERROR_MESSAGE.INVALID_NAME';
             isValid = false;
         }
     
     
         if( !(REGS_EXP.PASSWORD.test(form.confirmPassword || '') && form.confirmPassword=== form.password) ){
-            errors.confirmPassword = 'La contraseña no es igual'
+            errors.confirmPassword = 'ERROR_MESSAGE.PASSWORD_DIFERENT'
             isValid = false;
         }
     }

@@ -1,0 +1,94 @@
+{
+    "CONFIG":{
+        "EN": "en",
+        "ES": "es"
+    },
+    "LOGIN":{
+        "LOGIN": "Sign in",
+        "REGISTER": "Sing up",
+        "EMAIL": "Email",
+        "INSERT_EMAIL": "Insert your email",
+        "INSERT_PASSWORD": "Insert your password",
+        "NEW_HERE": "New here?",
+        "CREATE_ACCOUNT": "Create an account",
+        "GOOGLE": "Google"
+    },
+    "REGISTER":{
+        "NAME": "Name",
+        "INSERT_NAME": "Insert your name",
+        "PASSWORD": "Password",
+        "CONFIRM_PASSWORD": "Confirm your password",
+        "HAVE_ACCOUNT": "Already have an account?"
+    },
+    "ERROR_MESSAGE":{
+        "INVALID_EMAIL": "Invalid email",
+        "INVALID_PASSWORD": "Invalid password",
+        "INVALID_NAME": "Invalid name",
+        "PASSWORD_DIFERENT": "The passwords aren't the same",
+        "PASSWORD_CONTENT": "The password must have at least 8 characters, one lowercase letter, one uppercase letter, one number, one special character."
+    },
+    "LOADER": {
+        "LOADING": "Loading ..."
+    },
+    "DASHBOARD":{
+        "GREETING": "Hi, ",
+        "SEARCH_PKM": "Search Pokemon",
+        "SETTINGS": "Settings",
+        "MY_FAVORITES": "My favorites"
+    },
+    "NAVBAR":{
+        "HOME": "Home",
+        "SEARCH": "Search",
+        "MY_FAVORITES": "My favorites"
+    },
+    "SEARCH_BAR":{
+        "PLACEHOLDER": "Search by id or name"
+    },
+    "FAVORITES_PAGE": {
+        "MY_FAVORITES": "My favorite pokemons",
+        "UPS": "Uppss...",
+        "FAV_EMPTY": "You don't have favorite pokemons.",
+        "SEARCH": "Search"
+    },
+    "TYPES_PKM":{
+        "BUG":       "Bug",
+        "DEFAULT":   "Default",
+        "DRAGON":    "Dragon",
+        "ELECTRIC":  "Electric",
+        "FAIRY":     "Fairy",
+        "FIGHTING":  "Fighting",
+        "FIRE":      "Fire",
+        "FLYING":    "Flying",
+        "GHOTS":     "Ghots",
+        "GRASS":     "Grass",
+        "GROUND":    "Ground",
+        "ICE":       "Ice",
+        "NORMAL":    "Normal",
+        "POISON":    "Poison",
+        "PSYCHIC":   "Psychic",
+        "ROCK":      "Rock",
+        "STEEL":     "Steel",
+        "WATER":     "Water"
+    },
+    "DETAILS": {
+        "HP": "Hit Points",
+        "ATTACK": "Attack",
+        "DEFENSE": "Defense",
+        "SPECIAL_ATTACK": "Special-Attack",
+        "SPECIAL_DEFENSE": "Special-Defense",
+        "SPEED": "Speed",
+        "BACK": "Back"
+    },
+    "USER_DROP": {
+        "FAVORITES": "My favorites",
+        "SETTINGS": "Settings",
+        "LOGOUT": "Logout"
+    },
+    "NOT_FOUND": {
+        "TITLE": "Uh-Oh...",
+        "THE_POKEMON": "The Pokemon",
+        "NOT_EXIST": "does not exist",
+        "SEARCH_PKM": "Search Pokemon!"
+    }
+   
+}

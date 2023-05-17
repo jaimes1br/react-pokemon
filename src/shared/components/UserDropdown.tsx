@@ -1,10 +1,19 @@
+import { useNavigate } from "react-router-dom";
 import { startLogout } from "../../store/auth/thunks";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useTranslation } from "react-i18next";
 
 export const UserDropdown = () => {
 
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const [ t ] = useTranslation('global');
+
   const { photoURL } = useAppSelector( state => state.auth);
+
+  const handleNavigation = (path: string) => {
+    navigate(``);   
+  }
 
   const handleLogout = () => {
     dispatch( startLogout() );
@@ -21,10 +30,22 @@ export const UserDropdown = () => {
         </button>
 
         <ul className="dropdown-menu">
-            <li className="dropdown-item drop-item">Action</li>
-            <li className="dropdown-item drop-item">Another action</li>   
+            <li 
+              className="dropdown-item drop-item" 
+              onClick={() => handleNavigation('/favorites')}>
+                {t('USER_DROP.FAVORITES')}
+            </li>
+            <li 
+              className="dropdown-item drop-item"
+              onClick={() => handleNavigation('/home')}>
+                {t('USER_DROP.SETTINGS')}
+            </li>   
             <li><hr className="dropdown-divider"/></li>
-            <li className="dropdown-item drop-item" onClick={ handleLogout }>Logout</li>
+            <li 
+              className="dropdown-item drop-item" 
+              onClick={ handleLogout }>
+                {t('USER_DROP.LOGOUT')}
+            </li>
         </ul>
     </div>
   )

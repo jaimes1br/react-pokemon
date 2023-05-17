@@ -6,6 +6,7 @@ import { setDetailPokemon } from "../../store/pokemon/pokemonSlice"
 import { pokemonFake } from "../../shared/constants"
 import classnames from 'classnames';
 import { useFavorite } from "../../hooks"
+import { useTranslation } from "react-i18next"
 
 interface Props {
     pokemon: PokemonDetail | PokemonDetailFake
@@ -15,6 +16,8 @@ export const PokemonDatail = ({ pokemon }: Props ) => {
 
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+
+    const [t] = useTranslation('global');
 
     const { isFav, handleFavorite } = useFavorite({pokemon });
     const { currentPage } = useAppSelector(state => state.pokemons);
@@ -62,7 +65,7 @@ export const PokemonDatail = ({ pokemon }: Props ) => {
                                     key={type}
                                     style={{ color: `${colors[i]}`, borderColor: `${colors[i]}` }}
                                     className="col-5 my-auto py-1 text-center types">
-                                        { pipePokemonName(type)}
+                                        { t(`TYPES_PKM.${type.toUpperCase()}`)}
                                 </h4>
                             ))
                         
@@ -72,39 +75,37 @@ export const PokemonDatail = ({ pokemon }: Props ) => {
             </div>
             <div className="col-6 d-flex pkm_info">
                 <div className="container my-auto">
-                    <div className="row justify-content-evenly">
-                        <h3 className="col-6">Hp</h3>
-                        <h3 className="col-6 text-end">{ pokemon.stats.hp }</h3>
+                    <div className="row justify-content-around">
+                        <h3 className="col-8">{t('DETAILS.HP')}</h3>
+                        <h3 className="col-3 text-center align-self-center">{ pokemon.stats.hp }</h3>
                     </div>
-                    <div className="row justify-content-evenly">
-                        <h3 className="col-6">Attack</h3>
-                        <h3 className="col-6 text-end">{ pokemon.stats.attack }</h3>
+                    <div className="row justify-content-around">
+                        <h3 className="col-8">{t('DETAILS.ATTACK')}</h3>
+                        <h3 className="col-3 text-center align-self-center">{ pokemon.stats.attack }</h3>
                     </div>
-                    <div className="row justify-content-evenly">
-                        <h3 className="col-6">Defense</h3>
-                        <h3 className="col-6 text-end">{ pokemon.stats.defense }</h3>
+                    <div className="row justify-content-around">
+                        <h3 className="col-8">{t('DETAILS.DEFENSE')}</h3>
+                        <h3 className="col-3 text-center align-self-center">{ pokemon.stats.defense }</h3>
                     </div>
-                    <div className="row justify-content-evenly">
-                        <h3 className="col-6">Special-attack</h3>
-                        <h3 className="col-6 text-end">{ pokemon.stats["special-attack"]}</h3>
+                    <div className="row justify-content-around">
+                        <h3 className="col-8">{t('DETAILS.SPECIAL_ATTACK')}</h3>
+                        <h3 className="col-3 text-center align-self-center">{ pokemon.stats["special-attack"]}</h3>
                     </div>
-                    <div className="row justify-content-evenly">
-                        <h3 className="col-6">Special-defense</h3>
-                        <h3 className="col-6 text-end">{ pokemon.stats["special-defense"] }</h3>
+                    <div className="row justify-content-around">
+                        <h3 className="col-8">{t('DETAILS.SPECIAL_DEFENSE')}</h3>
+                        <h3 className="col-3 text-center align-self-center">{ pokemon.stats["special-defense"] }</h3>
                     </div>
-                    <div className="row justify-content-evenly">
-                        <h3 className="col-6">Speed</h3>
-                        <h3 className="col-6 text-end">{ pokemon.stats.speed }</h3>
+                    <div className="row justify-content-around">
+                        <h3 className="col-8">{t('DETAILS.SPEED')}</h3>
+                        <h3 className="col-3 text-center align-self-center">{ pokemon.stats.speed }</h3>
                     </div>
                 </div>
             </div>
         </div>
        </div>
     </div>
-    <div className="d-flex justify-content-end mt-5">
-        {/* <NavLink to={`/search?page=${currentPage}`}> */}
-             <button className="btn btn-back" onClick={ toBack }>Regresar</button>
-        {/* </NavLink> */}
+    <div className="d-flex justify-content-end my-5">
+        <button className="btn btn-back" onClick={ toBack }>{t('DETAILS.BACK')}</button>
     </div>
     </>
   )
