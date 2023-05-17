@@ -1,15 +1,10 @@
-import { loginWithEmailPassword,
-         logoutFirebase,
-         registerUserWithEmailPassword,
-         singInWithGoogle,
+import { loginWithEmailPassword, logoutFirebase,
+         registerUserWithEmailPassword, singInWithGoogle,
          } from "../../firebase/provider"
 import { LoginUser, RegisterUser } from "../../shared/types"
 import { clearPokemonState } from "../pokemon/pokemonSlice"
 import { AppDispatch } from "../store"
 import { checkingCredentials, login, logout } from "./authSlice"
-
-
-
 
 export const checkingAuthentication = () => {
   return async( dispatch:AppDispatch ) => {
@@ -17,7 +12,6 @@ export const checkingAuthentication = () => {
       dispatch( checkingCredentials() )
   }
 }
-
 
 export const startCreatingUserWithEmailPassword = ({ email, password, displayName }: RegisterUser) => {
   return async( dispatch: AppDispatch ) =>{
@@ -52,7 +46,6 @@ export const startGoogleSignIn = () => {
       dispatch( login( result ));
   }
 }
-
 
 export const startLogout = () => {
   return async( dispatch: AppDispatch ) => {

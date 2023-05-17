@@ -3,13 +3,13 @@ import { BasicPokemon, InitialStatePokemon, PokemonDetail } from '../../shared/t
 import { pokemonFake } from '../../shared/constants';
 
 const initialState: InitialStatePokemon = {
-    isSaving: false,
-    isLoading: false,
     allPokemons: [],
-    favPokemons: [],
     currentPage: 1,
-    pokemonDetail: pokemonFake,
+    favPokemons: [],
     isError: false,
+    isLoading: false,
+    isSaving: false,
+    pokemonDetail: pokemonFake,
 }
 
 export const pokemonSlice = createSlice({
@@ -17,23 +17,33 @@ export const pokemonSlice = createSlice({
   initialState,
   reducers: {
     clearPokemonState: ( state ) => {
-      state.isSaving = false;
-      state.isLoading = false;
       state.allPokemons = [];
-      state.favPokemons = [];
       state.currentPage = 1;
-      state.pokemonDetail = pokemonFake;
+      state.favPokemons = [];
       state.isError =false;
+      state.isLoading = false;
+      state.isSaving = false;
+      state.pokemonDetail = pokemonFake;
     },
     isLoadingPokemons: ( state ) => {
-      state.isLoading = true;
       state.isError = false;
+      state.isLoading = true;
+    },
+    setAddPokemonFav: (state, { payload }: PayloadAction<{pkms: number[], id: number}>) => {
+      state.allPokemons[payload.id - 1] = {...state.allPokemons[payload.id - 1], isFav: true};
+      state.favPokemons = payload.pkms;
+      state.isSaving = false;  
     },
     setAllPokemons: (state, action: PayloadAction<BasicPokemon[]>) => {
       state.allPokemons = action.payload;
     },
     setCurrentPage: (state, action: PayloadAction<number>) => {
       state.currentPage = action.payload;
+    },
+    setDeletePokemonFav: (state, { payload }: PayloadAction<{pkms: number[], id: number}>) => {
+      state.allPokemons[payload.id - 1] = {...state.allPokemons[payload.id - 1], isFav: false};
+      state.favPokemons = payload.pkms;
+      state.isSaving = false;
     },
     setDetailPokemon: (state, action: PayloadAction<PokemonDetail>) => {
       state.pokemonDetail = action.payload;
@@ -54,27 +64,18 @@ export const pokemonSlice = createSlice({
       })
       state.isSaving=false;
     },
-    setAddPokemonFav: (state, { payload }: PayloadAction<{pkms: number[], id: number}>) => {
-      state.favPokemons = payload.pkms;
-      state.allPokemons[payload.id - 1] = {...state.allPokemons[payload.id - 1], isFav: true};
-      state.isSaving = false;  
-    },
-    setDeletePokemonFav: (state, { payload }: PayloadAction<{pkms: number[], id: number}>) => {
-      state.favPokemons = payload.pkms;
-      state.allPokemons[payload.id - 1] = {...state.allPokemons[payload.id - 1], isFav: false};
-      state.isSaving = false;
-    }
   }
 })
 
 export const { 
   clearPokemonState,
   isLoadingPokemons, 
+  setAddPokemonFav,
   setAllPokemons, 
   setCurrentPage, 
+  setDeletePokemonFav,  
   setDetailPokemon,
   setError,
   setIsSavingFav,
-  setPokemonFav,
-  setAddPokemonFav,
-  setDeletePokemonFav  } =  pokemonSlice.actions;
+  setPokemonFav
+} =  pokemonSlice.actions;

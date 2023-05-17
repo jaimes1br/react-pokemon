@@ -1,17 +1,18 @@
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { startLogout } from "../../store/auth/thunks";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { useTranslation } from "react-i18next";
 
 export const UserDropdown = () => {
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const [ t ] = useTranslation('global');
 
+  const [ t ] = useTranslation('global');
   const { photoURL } = useAppSelector( state => state.auth);
 
   const handleNavigation = (path: string) => {
+    //TODO add navigation values
     navigate(``);   
   }
 

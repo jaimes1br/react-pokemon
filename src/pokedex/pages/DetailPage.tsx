@@ -9,7 +9,7 @@ export const DetailPage = () => {
 
     const dispatch = useAppDispatch();
     const params = useParams();
-    const { id: toSearch = ''} = params
+    const { id: toSearch = '' } = params
     const { isLoading, pokemonDetail, isError } = useAppSelector( state => state.pokemons );
     const [ isFakePokemon, setIsFakePokemon ] = useState(true);
 
@@ -18,6 +18,7 @@ export const DetailPage = () => {
     },[]);
 
     useEffect(() => {
+
         if(pokemonDetail.id !== -1)
             setIsFakePokemon(false);
     },[ pokemonDetail ])

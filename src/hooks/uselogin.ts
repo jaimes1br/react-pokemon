@@ -1,9 +1,9 @@
+import { useState, FormEvent } from 'react';
+import { useForm } from "./useForm";
 import { validationsForm } from "../helpers";
 import { FormDataValid } from "../shared/types";
 import { startGoogleSignIn, startLoginWithEmailPassword } from "../store/auth/thunks";
 import { useAppDispatch } from "../store/hooks";
-import { useForm } from "./useForm";
-import { useState, FormEvent } from 'react';
 
 export const useLogin = (formData: any) => {
     
@@ -15,7 +15,8 @@ export const useLogin = (formData: any) => {
     const { formState, handleInputChange } = useForm(formData);
     
     const hanldeSubmit = (evt: FormEvent<HTMLFormElement>) => {
-      evt.preventDefault();
+ 
+        evt.preventDefault();
       const { isValid, errors } = validationsForm(formState,true);
       setFormSubmitted(true);
       setIsValidForm(isValid);
@@ -23,8 +24,7 @@ export const useLogin = (formData: any) => {
   
       if(!isValid) return
       
-      dispatch( startLoginWithEmailPassword({ ...formState }) );
-      
+      dispatch( startLoginWithEmailPassword({ ...formState }) );      
     }
 
     const onGoogleSignIn = () => {

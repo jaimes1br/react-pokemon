@@ -1,10 +1,10 @@
-import { NavLink } from "react-router-dom"
-import { BasicPokemon } from "../../shared/types";
 import { useEffect, useState } from "react";
-import { useAppSelector } from "../../store/hooks";
-import { Loader } from "../../shared";
-import { PokemonCard } from "../components";
+import { NavLink } from "react-router-dom"
 import { useTranslation } from "react-i18next";
+import { Loader } from "../../shared";
+import { BasicPokemon } from "../../shared/types";
+import { useAppSelector } from "../../store/hooks";
+import { PokemonCard } from "../components";
 
 export const FavoritesPage = () => {
   
@@ -13,10 +13,10 @@ export const FavoritesPage = () => {
   const [ isEmptyFav, setIsEmptyFav ] = useState<boolean>(false);
   const [ isLoadingFavs, setIsLoadingFavs] = useState<boolean>(true);
   const [ numFav, setNumFav ] = useState<number>(0);
-  const [t] =useTranslation('global');
+  const [ t ] =useTranslation('global');
 
   const setPokemonPage = () => {
-    setNumFav(favPokemons.length);
+    setNumFav( favPokemons.length );
     setIsEmptyFav(false);
     const temp = favPokemons.map( fav => allPokemons[fav - 1]);
 

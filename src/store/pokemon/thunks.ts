@@ -1,12 +1,9 @@
-import { getAllPokemons } from '../../helpers';
-import { isLoadingPokemons, setAddPokemonFav, setAllPokemons, setDeletePokemonFav, setDetailPokemon, setError, setIsSavingFav, setPokemonFav } from './pokemonSlice';
-import { AppDispatch, RootState } from '../store';
-import { getPokemonByIdOrName } from '../../helpers';
-import { PokemonDetail, PokemonDetailApi } from '../../shared/types';
-import { useAppSelector } from '../hooks';
 import { doc, setDoc } from 'firebase/firestore/lite';
 import { FirebaseDB } from '../../firebase/config';
-import { loadPokemonFav } from '../../helpers/loadPokemonFav';
+import { isLoadingPokemons, setAddPokemonFav, setAllPokemons, setDeletePokemonFav, setDetailPokemon, setError, setIsSavingFav, setPokemonFav } from './pokemonSlice';
+import { PokemonDetailApi } from '../../shared/types';
+import { getPokemonByIdOrName, getAllPokemons,loadPokemonFav } from '../../helpers';
+import { AppDispatch } from '../store';
 
 export const startGetAllPokemons = ( uid: string ) => {
     return async( dispatch: AppDispatch ) => {

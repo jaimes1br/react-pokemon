@@ -4,12 +4,12 @@ import { InitialStateAuth } from '../../shared/types'
 const IMAGE_DEFAULT = "https://i.pravatar.cc/150?u="
 
 const initialState: InitialStateAuth = {
+    displayName: null,
+    email: null,
+    errorMessage: null,
+    photoURL: null,
     status: 'checking', //'checking','not-authenticated', 'authenticated'
     uid: null,
-    email: null,
-    displayName: null,
-    photoURL: null,
-    errorMessage: null,
 }
 
 export const authSlice = createSlice({
@@ -17,23 +17,23 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     checkingCredentials: ( state ) => {
-        state.status = 'checking'
+        state.status = 'checking';
     },
     login: (state, { payload }: PayloadAction<any>) => {
-      state.status = 'authenticated', //'checking','not-authenticated', 'authenticated'
-      state.uid = payload.uid,
-      state.email = payload.email,
-      state.displayName = payload.displayName,
-      state.photoURL = payload.photoURL || `${IMAGE_DEFAULT}${payload.displayName.replace(' ','-')}`,
-      state.errorMessage = null
+      state.displayName = payload.displayName;
+      state.email = payload.email;
+      state.errorMessage = null;
+      state.photoURL = payload.photoURL || `${IMAGE_DEFAULT}${payload.displayName.replace(' ','-')}`;
+      state.status = 'authenticated'; //'checking','not-authenticated', 'authenticated'
+      state.uid = payload.uid;
     },
     logout: (state, { payload }: PayloadAction<any>) => {
-      state.status = 'not-authenticated', //'checking','not-authenticated', 'authenticated'
-      state.uid = null,
-      state.email = null,
-      state.displayName = null,
-      state.photoURL = null,
-      state.errorMessage = payload?.errorMessage
+      state.displayName = null;
+      state.email = null;
+      state.errorMessage = payload?.errorMessage;
+      state.photoURL = null;
+      state.status = 'not-authenticated'; //'checking','not-authenticated', 'authenticated'
+      state.uid = null;
     },
   },
 })

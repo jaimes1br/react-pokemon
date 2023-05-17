@@ -5,9 +5,9 @@ import { configSlice } from './config/configSlice';
 
 export const store = configureStore({
     reducer: {
-        pokemons: pokemonSlice.reducer,
         auth: authSlice.reducer,
         config: configSlice.reducer,
+        pokemons: pokemonSlice.reducer,
         
     },
 });

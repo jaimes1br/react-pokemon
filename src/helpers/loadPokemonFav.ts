@@ -6,11 +6,10 @@ export const loadPokemonFav = async(uid = '') => {
 
     try {
         const collectionRef = collection( FirebaseDB, `${ uid }/info/favPkm`);
-        const { docs }= await getDocs( collectionRef );
+        const { docs } = await getDocs( collectionRef );
         const data = docs.map( doc => doc.data());
     
-        return data[0].pkms
-        
+        return data[0].pkms 
     } catch (error) {
         //no tiene pokemones fav registrados
         return []

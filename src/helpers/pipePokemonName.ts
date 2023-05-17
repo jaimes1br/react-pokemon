@@ -3,7 +3,6 @@ export const pipePokemonName = (name: string) => {
     const capName = name.replace(/(^\w{1})/g,letter => letter.toUpperCase());
 
     return capName.length > 14 
-                ? capName.slice(0,12) + '...'
-                : capName;        
-
+            ? capName.slice(0,12) + '...'
+            : capName;        
 }

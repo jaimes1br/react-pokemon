@@ -1,12 +1,12 @@
-import { NavLink, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
+import classnames from 'classnames';
+import { useTranslation } from "react-i18next"
 import { PokemonDetail, PokemonDetailFake } from "../../shared/types"
-import { getColorType, pipePokemonName } from "../../helpers"
+import { pokemonFake } from "../../shared/constants"
+import { getColorType } from "../../helpers"
+import { useFavorite } from "../../hooks"
 import { useAppDispatch, useAppSelector } from "../../store/hooks"
 import { setDetailPokemon } from "../../store/pokemon/pokemonSlice"
-import { pokemonFake } from "../../shared/constants"
-import classnames from 'classnames';
-import { useFavorite } from "../../hooks"
-import { useTranslation } from "react-i18next"
 
 interface Props {
     pokemon: PokemonDetail | PokemonDetailFake
@@ -17,7 +17,7 @@ export const PokemonDatail = ({ pokemon }: Props ) => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
-    const [t] = useTranslation('global');
+    const [ t ] = useTranslation('global');
 
     const { isFav, handleFavorite } = useFavorite({pokemon });
     const { currentPage } = useAppSelector(state => state.pokemons);

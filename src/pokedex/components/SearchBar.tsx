@@ -1,7 +1,7 @@
-import { useNavigate } from 'react-router-dom';
 import { FormEvent } from "react";
-import { useForm } from "../../hooks"
+import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { useForm } from "../../hooks"
 
 const formData = {
   searchpkm: ''
@@ -11,7 +11,7 @@ export const SearchBar = () => {
 
   const navigate = useNavigate();
   const { searchpkm, handleInputChange } = useForm(formData);
-  const [t] = useTranslation('global');  
+  const [ t ] = useTranslation('global');  
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();

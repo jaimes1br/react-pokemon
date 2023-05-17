@@ -1,20 +1,20 @@
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { setDetailPokemon } from '../../store/pokemon/pokemonSlice';
 import { pokemonFake } from '../../shared/constants';
-import { useTranslation } from 'react-i18next';
 
 export const Dashboard = () => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     const { displayName } = useAppSelector( state => state.auth); 
-    const [t] = useTranslation('global');
+    const [ t ] = useTranslation('global');
+    
     const toSearch = () => {
         dispatch(setDetailPokemon(pokemonFake));
         navigate(`/search?page=1`);   
     }
-
 
   return (
     <div className="mt-3 card_dashboard ">

@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom"
-
 interface Props {
     children: string | JSX.Element | JSX.Element[] 
 }

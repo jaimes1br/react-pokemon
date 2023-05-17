@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom"
+import { useTranslation } from 'react-i18next';
 import { AuthLayout } from "../layout/AuthLayout"
 import { useRegister } from "../../hooks/useRegister";
-import { useTranslation } from 'react-i18next';
-
 
 const formData = {
   name: '',
@@ -22,13 +21,11 @@ export const RegisterPage = () => {
     handleInputChange,
     hanldeSubmit
   } = useRegister(formData);
-
   
   const holderName = t("REGISTER.INSERT_NAME");
   const holderEmail = t("LOGIN.INSERT_EMAIL");
   const holderPassword = t("LOGIN.INSERT_PASSWORD");
   const holderConfirmPassword = t("REGISTER.CONFIRM_PASSWORD");
-
 
   return (
     <>

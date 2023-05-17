@@ -1,5 +1,5 @@
-import classnames from 'classnames';
 import { NavLink } from "react-router-dom"
+import classnames from 'classnames';
 import { BasicPokemon } from '../../shared/types';
 import { useFavorite } from '../../hooks';
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 
 export const PokemonCard = ({ pokemon }: Props ) => {
 
-  const { name, isFav, handleFavorite } = useFavorite({pokemon});
+  const { name, isFav, handleFavorite } = useFavorite({ pokemon });
 
   return (
     <div className="col-3 my-3"> 

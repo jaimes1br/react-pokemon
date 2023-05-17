@@ -2,10 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { store } from './store';
-import { PokedexApp } from './PokedexApp';
 import { I18nextProvider } from 'react-i18next';
 import i18next from 'i18next';
+import { PokedexApp } from './PokedexApp';
+import { store } from './store';
 
 import global_es from './translations/es/global.json';
 import global_en from './translations/en/global.json';

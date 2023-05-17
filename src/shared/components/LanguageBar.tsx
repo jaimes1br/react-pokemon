@@ -1,19 +1,20 @@
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { setLanguage } from "../../store/config/configSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks"
-import { useTranslation } from 'react-i18next';
-import { useEffect } from 'react';
 
 export const LanguageBar = () => {
   
   const dispatch = useAppDispatch();
   const [ t,i18n ] = useTranslation('global');
-  const { lang } = useAppSelector(state => state.config); 
+  const { lang } = useAppSelector( state => state.config ); 
 
   useEffect(() => {
     i18n.changeLanguage(lang);
   },[ lang ])
 
   const handleLanguage = (newLang: string) =>  {
+    
     if(newLang !== lang){
       dispatch(setLanguage(newLang));
       localStorage.setItem('lang', newLang);

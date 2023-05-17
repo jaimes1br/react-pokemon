@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom"
-import { NavbarLayout } from "../layout/NavbarLayout"
 import { useTranslation } from 'react-i18next';
+import { NavbarLayout } from "../layout/NavbarLayout"
 
 export const NavBarAuth = () => {
-    const [t] = useTranslation('global');
 
+    const [ t ] = useTranslation('global');
     const navigate = useNavigate();
 
     const handleNavigate = (to: string) => {
@@ -12,7 +12,6 @@ export const NavBarAuth = () => {
     }
   
     return (
-    <>
         <NavbarLayout>
             <div>
                 <button 
@@ -28,7 +27,5 @@ export const NavBarAuth = () => {
                 </button>
             </div>
         </NavbarLayout>
-
-    </>
   )
 }

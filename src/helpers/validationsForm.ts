@@ -23,12 +23,10 @@ export const validationsForm = (form: FormDataValid, isLogin: boolean = false) =
     } 
 
     if( !REGS_EXP.PASSWORD.test(form.password) ){
-        if(isLogin){
-            errors.password = 'ERROR_MESSAGE.INVALID_PASSWORD';
-        }else{
-            errors.password = 'ERROR_MESSAGE.PASSWORD_CONTENT';
-        }
-        
+        errors.password = (isLogin) 
+            ? 'ERROR_MESSAGE.INVALID_PASSWORD'
+            : 'ERROR_MESSAGE.PASSWORD_CONTENT'
+
         isValid = false;
     }
 
@@ -38,8 +36,7 @@ export const validationsForm = (form: FormDataValid, isLogin: boolean = false) =
             isValid = false;
         }
     
-    
-        if( !(REGS_EXP.PASSWORD.test(form.confirmPassword || '') && form.confirmPassword=== form.password) ){
+        if( !(REGS_EXP.PASSWORD.test(form.confirmPassword || '') && form.confirmPassword === form.password) ){
             errors.confirmPassword = 'ERROR_MESSAGE.PASSWORD_DIFERENT'
             isValid = false;
         }

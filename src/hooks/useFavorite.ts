@@ -3,18 +3,17 @@ import { BasicPokemon, PokemonDetail, PokemonDetailFake } from "../shared/types"
 import { pipePokemonName } from "../helpers";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { startAddFav, startDeleteFav } from "../store/pokemon/thunks";
-
 interface Props {
     pokemon: BasicPokemon | PokemonDetail | PokemonDetailFake,
     isDetail?: boolean
 }
+
 export const useFavorite = ({ pokemon }: Props ) => {
 
     const dispatch = useAppDispatch();
     const { favPokemons } = useAppSelector(state => state.pokemons);
     const [ isFav, setIsFav ] = useState<boolean>(pokemon.isFav);
-    
-    
+        
     const name = useMemo(() => {
         return pipePokemonName(pokemon.name);
     },[pokemon.name]);
@@ -34,8 +33,8 @@ export const useFavorite = ({ pokemon }: Props ) => {
 
 
     useEffect(() => {
-        setIsFav(pokemon.isFav);
         
+        setIsFav(pokemon.isFav);       
     },[pokemon]);
     
     return {

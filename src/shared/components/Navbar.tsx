@@ -1,11 +1,10 @@
+import { NavLink } from 'react-router-dom';
+import { useTranslation } from "react-i18next";
 import { NavbarLayout } from "../layout/NavbarLayout"
 import { UserDropdown } from "./UserDropdown"
-import { NavLink } from 'react-router-dom';
-import classnames from 'classnames';
-import { useTranslation } from "react-i18next";
 
 export const Navbar = () => {
-  const [t] = useTranslation('global');
+  const [ t ] = useTranslation('global');
 
   return (
     <NavbarLayout>

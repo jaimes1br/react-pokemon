@@ -1,8 +1,8 @@
 export interface BasicPokemon {
-    name: string
-    url: string
     id: number
     isFav: boolean
+    name: string
+    url: string
 }
 
 export interface StatsPokemon {
@@ -17,10 +17,10 @@ export interface StatsPokemon {
 export interface PokemonDetail {
     id: number
     imageUrl: string
+    isFav: boolean
     name: string
     stats: StatsPokemon
     types: string[],
-    isFav: boolean
 }
 
 export interface PokemonDetailApi {
@@ -34,40 +34,40 @@ export interface PokemonDetailApi {
 export  interface PokemonDetailFake {
     id: -1
     imageUrl: ''
+    isFav: boolean
     name: ''
     stats: StatsPokemon
     types: [],
-    isFav: boolean
 }
 export interface InitialStatePokemon {
-    isSaving: boolean,
-    isLoading: boolean,
     allPokemons: BasicPokemon[],
-    favPokemons: any[],
     currentPage: number,
-    pokemonDetail: PokemonDetail | PokemonDetailFake,
+    favPokemons: any[],
     isError: boolean,
+    isLoading: boolean,
+    isSaving: boolean,
+    pokemonDetail: PokemonDetail | PokemonDetailFake,
 }
 
 export interface InitialStateAuth {
+    displayName: null,
+    email: null,
+    errorMessage: null
+    photoURL: null,
     status: 'checking' |'not-authenticated' | 'authenticated'
     uid: null,
-    email: null,
-    displayName: null,
-    photoURL: null,
-    errorMessage: null
 }
 export interface FormDataValid {
-    email: string
-    password: string
-    name?: string
     confirmPassword?: string
+    email: string
+    name?: string
+    password: string
 }
 
 export interface RegisterUser {
+    displayName: string
     email: string,
     password: string,
-    displayName: string
 }
 
 export interface LoginUser{

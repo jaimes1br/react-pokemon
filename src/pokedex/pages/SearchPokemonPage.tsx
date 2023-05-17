@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-
 import { Pagination, PokemonCard, SearchBar } from "../components"
 import { useAppSelector } from "../../store/hooks";
 import { BasicPokemon } from "../../shared/types";
@@ -20,20 +19,20 @@ export const SearchPokemonPage = () => {
   
   return (
     <>  
-        <SearchBar/>
-        <div className="container mt-4">
-            <div className="row">
-              {
-                listPokemonPage.map((pkm,i)=> (
-                  <PokemonCard 
-                    key={i}
-                    pokemon={pkm}
-                    />
-                ))
-              }
-            </div>
-        </div>
-        <Pagination/>
+      <SearchBar/>
+      <div className="container mt-4">
+          <div className="row">
+            {
+              listPokemonPage.map((pkm,i)=> (
+                <PokemonCard 
+                  key={i}
+                  pokemon={pkm}
+                  />
+              ))
+            }
+          </div>
+      </div>
+      <Pagination/>
     </>
   )
 }
